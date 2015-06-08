@@ -23,7 +23,7 @@ function get_form(subr, username, userid, commenturl) {
     s +=   '<input type="hidden" name="name" value="' + username + '">';
     s +=   '<input type="hidden" name="id" value="' + userid + '">';
     s +=   '<input type="hidden" name="duration" value =1>';
-    s +=   '<input type="hidden" name="ban_message">;
+    s +=   '<input type="hidden" name="ban_message">';
     s +=   '<input type="hidden" name="note" value="' + bn + '">';
     s +=   
     s +=   '<span class="option main active">';

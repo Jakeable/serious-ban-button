@@ -9,11 +9,11 @@
 // reddit uses jQuery so just steal that
 var $ = unsafeWindow.jQuery; // unsafeWindow is bad!~
 
-function get_form(subr, username, userid) {
+function get_form(subr, username, userid, commenturl) {
     // of course js lacks any sort of sane multiline syntax
     var st = "Jokes and off-topic comments are not appropriate for [Serious] posts.  Take a day off to review the rules of this subreddit. \n\n" + 
              "[Subreddit rules](https://www.reddit.com/r/AskReddit/wiki/index#wiki_--.5Bserious.5D_tags--) \n\n" + 
-             "[Comment in violation of the tag](http://reddit.com/comments/parentID/./commentID)";
+             "[Comment in violation of the tag](" + commenturl + ")";
     var bn = "[Serious] tag violation - YOURUSERNAMEHERE";
     var s = '';
     s += '<form class="toggle remove-button-2" method="post" action="/post/friend" onsubmit="return false;">';
@@ -23,7 +23,7 @@ function get_form(subr, username, userid) {
     s +=   '<input type="hidden" name="name" value="' + username + '">';
     s +=   '<input type="hidden" name="id" value="' + userid + '">';
     s +=   '<input type="hidden" name="duration" value =1>';
-    s +=   '<input type="hidden" name="ban_message" value="' + st + '">';
+    s +=   '<input type="hidden" name="ban_message">;
     s +=   '<input type="hidden" name="note" value="' + bn + '">';
     s +=   
     s +=   '<span class="option main active">';
@@ -40,7 +40,9 @@ function get_form(subr, username, userid) {
     s +=   '<span class="error USER_DOESNT_EXIST field-name" style="display:none"></span>';
     s += '</form>';
 
-    return s;
+    var $s = $(s);
+    $s.find('input[name="ban_message"]').val(st);
+    return $s;
 }
 
 function run_banbutton() {
@@ -79,7 +81,10 @@ function run_banbutton() {
                         author_id = classes[i].replace('id-', '');
                     }
                 }
-                $(el).children('li:first').after('<li>'+get_form(subr, author_name, author_id)+'</li>');
+                var commenturl = $(el).closest('.thing').find('.flat-list.buttons .bylink:first')[0].href
+                var $form = get_form(subr, author_name, author_id, commenturl);
+                var $sbanbutton = $('<li />').append($form);
+                $(el).children('li:first').after($sbanbutton);
             }
         }
     });

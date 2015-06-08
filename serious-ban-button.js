@@ -43,7 +43,7 @@ function get_form(subr, username, userid, commenturl) {
     var $s = $(s);
     $s.find('input[name="ban_message"]').val(st);
     return $s;
-}eac
+}
 
 function run_banbutton() {
 

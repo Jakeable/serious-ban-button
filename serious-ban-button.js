@@ -11,7 +11,7 @@ var $ = unsafeWindow.jQuery; // unsafeWindow is bad!~
 
 function get_form(subr, username, userid) {
     // of course js lacks any sort of sane multiline syntax
-    var st = "[Serious] tag violation";
+    var st = "Jokes and off-topic comments are not appropriate for [Serious] posts.  Take a day off to review the rules of this subreddit.";
     var bn = "[Serious] tag violation - Jakeable";
     var s = '';
     s += '<form class="toggle remove-button-2" method="post" action="/post/friend" onsubmit="return false;">';
@@ -25,7 +25,7 @@ function get_form(subr, username, userid) {
     s +=   '<input type="hidden" name="note" value="' + bn + '">';
     s +=   
     s +=   '<span class="option main active">';
-    s +=     '<a class="togglebutton" onclick="return toggle(this)" href="#">ban</a>';
+    s +=     '<a class="togglebutton" onclick="return toggle(this)" href="#">[s]ban</a>';
     s +=   '</span>';
     s +=   '<span class="option error">are you sure? ';
     s +=     '<a class="yes" onclick="post_form(this.parentNode.parentNode, \'friend\');" href="javascript:void(0)">yes</a>';

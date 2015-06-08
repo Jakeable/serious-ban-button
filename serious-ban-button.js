@@ -9,7 +9,7 @@
 // reddit uses jQuery so just steal that
 var $ = unsafeWindow.jQuery; // unsafeWindow is bad!~
 
-function get_form(subr, username, userid) {
+function get_form(subr, username, userid, commenturl) {
     // of course js lacks any sort of sane multiline syntax
     var st = "Jokes and off-topic comments are not appropriate for [Serious] posts.  Take a day off to review the rules of this subreddit. \n\n" + 
              "[Subreddit rules](https://www.reddit.com/r/AskReddit/wiki/index#wiki_--.5Bserious.5D_tags--) \n\n" + 
@@ -81,7 +81,10 @@ function run_banbutton() {
                         author_id = classes[i].replace('id-', '');
                     }
                 }
-                $(el).children('li:first').after('<li>'+get_form(subr, author_name, author_id)+'</li>');
+                var commenturl = $(el).closest('.thing').find('.flat-list.buttons .bylink:first')[0].href
+                var $form = get_form(subr, author_name, author_id, commenturl);
+                var $sbanbutton = $('<li />').append($form);
+                $(el).children('li:first').after($sbanbutton);
             }
         }
     });

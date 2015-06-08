@@ -9,9 +9,11 @@
 // reddit uses jQuery so just steal that
 var $ = unsafeWindow.jQuery; // unsafeWindow is bad!~
 
-function get_form(subr, username, userid) {
+function get_form(subr, username, userid, thing_id) {
     // of course js lacks any sort of sane multiline syntax
-    var st = "Jokes and off-topic comments are not appropriate for [Serious] posts.  Take a day off to review the rules of this subreddit.";
+    var st = "Jokes and off-topic comments are not appropriate for [Serious] posts.  Take a day off to review the rules of this subreddit." + 
+             "[Subreddit rules](https://www.reddit.com/r/AskReddit/wiki/index#wiki_--.5Bserious.5D_tags--)" + 
+             "[Comment in violation of the tag](thing_id)";
     var bn = "[Serious] tag violation - Jakeable";
     var s = '';
     s += '<form class="toggle remove-button-2" method="post" action="/post/friend" onsubmit="return false;">';

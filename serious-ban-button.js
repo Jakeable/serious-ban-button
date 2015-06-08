@@ -14,7 +14,7 @@ function get_form(subr, username, userid, url) {
     var st = "Jokes and off-topic comments are not appropriate for [Serious] posts.  Take a day off to review the rules of this subreddit. \n\n" + 
              "[Subreddit rules](https://www.reddit.com/r/AskReddit/wiki/index#wiki_--.5Bserious.5D_tags--) \n\n" + 
              "[Comment in violation of the tag](url)";
-    var bn = "[Serious] tag violation - Jakeable";
+    var bn = "[Serious] tag violation - YOURUSERNAMEHERE";
     var s = '';
     s += '<form class="toggle remove-button-2" method="post" action="/post/friend" onsubmit="return false;">';
     s +=   '<input type="hidden" name="action" value="add">';

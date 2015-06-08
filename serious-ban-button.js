@@ -43,7 +43,7 @@ function get_form(subr, username, userid, commenturl) {
     var $s = $(s);
     $s.find('input[name="ban_message"]').val(st);
     return $s;
-}
+}eac
 
 function run_banbutton() {
 
@@ -81,7 +81,7 @@ function run_banbutton() {
                         author_id = classes[i].replace('id-', '');
                     }
                 }
-                var commenturl = $(el).closest('.thing').find('.flat-list.buttons .bylink:first')[0].href
+                var commenturl = $(el).closest('.thing').find('.flat-list.buttons .bylink').prop('href');
                 var $form = get_form(subr, author_name, author_id, commenturl);
                 var $sbanbutton = $('<li />').append($form);
                 $(el).children('li:first').after($sbanbutton);
